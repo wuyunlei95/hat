@@ -1,0 +1,8 @@
+account,realname,gender,dept,role,password1,password2,email,casetype,error_msg
+user70,user70,F,/Sales,销售,123456,123456,700333334@qq.com,Scene_add_one_success,0
+user71,user71,F,/Sales,销售,123456,123456,710333334@qq.com,Scene_add_many_but_diff_success,0
+user72,user72,M,/Sales,销售,123456,123456,720333334@qq.com,Scene_add_many_but_diff_success,0
+user73,user73,F,/Sales,销售,123456,123456,730333334@qq.com,Scene_add_many_but_diff_success,0
+user74,user74,M,/Sales,销售,123456,123456,740333334@qq.com,Scene_add_many_but_diff_success,0
+user75,user75,F,/Sales,销售,123456,123456,750333334@qq.com,Scene_add_the_same_failure_1,0
+user75,user75,F,/Sales,销售,123456,123456,750333334@qq.com,Scene_add_the_same_failure_2,用户名已经有user75这条记录了。

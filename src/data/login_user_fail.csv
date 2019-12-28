@@ -1,0 +1,5 @@
+user,password,casetype
+,,empty_name
+ad,123456,wrong_name
+user1,,empty_password
+user1,1234,wrong_password

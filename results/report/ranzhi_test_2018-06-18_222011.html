@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>然之测试</title>
+    <meta name="generator" content="HtmlTestRunner 0.8.4"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    
+<style type="text/css" media="screen">
+
+/* -- css div popup ------------------------------------------------------------------------ */
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #99CCFF;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 10pt;
+    width: 500px;
+}
+
+/* -- report ------------------------------------------------------------------------ */
+
+#show_detail_line .label {
+    font-size: 85%;
+    cursor: pointer;
+}
+
+#show_detail_line {
+    margin: 2em auto 1em auto;
+}
+
+#total_row  { font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+</style>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class="container">
+    <div class='heading'>
+<h1>然之测试</h1>
+<p><strong>Start Time:</strong> 2018-06-18 22:20:11</p>
+<p><strong>Duration:</strong> 0:05:30.488903</p>
+<p><strong>Status:</strong> <span class="text text-success">Pass <strong>4</strong></span></p>
+
+<p class='description'>登陆，语言，模块标题，添加用户</p>
+</div>
+
+
+    
+<p id='show_detail_line'>
+<span class="label label-primary" onclick="showCase(0)">Summary</span>
+<span class="label label-danger" onclick="showCase(1)">Failed</span>
+<span class="label label-default" onclick="showCase(2)">All</span>
+</p>
+<table id='result_table' class="table">
+    <thead>
+        <tr id='header_row'>
+            <th>Test Group/Test case</td>
+            <th>Count</td>
+            <th>Pass</td>
+            <th>Fail</td>
+            <th>Error</td>
+            <th>View</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c1',1)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: [2018-06-18 22:20:48,364]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:20:52,835]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:20:53,854]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:20:57,900]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:21:03,677]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:21:04,882]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:21:05,747]-[log.py]-INFO:性别选择“女”
+[2018-06-18 22:21:06,647]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:21:07,613]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:21:08,566]-[log.py]-INFO:输入密码
+[2018-06-18 22:21:09,468]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:21:10,574]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:21:11,614]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:21:12,531]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:21:14,799]-[log.py]-INFO:进入框架
+[2018-06-18 22:21:15,096]-[log.py]-INFO:退出框架
+[2018-06-18 22:21:15,099]-[log.py]-INFO:[用户名]为空，错误提示信息正确！
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c2',1)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: [2018-06-18 22:20:48,364]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:20:52,835]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:20:53,854]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:20:57,900]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:21:03,677]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:21:04,882]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:21:05,747]-[log.py]-INFO:性别选择“女”
+[2018-06-18 22:21:06,647]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:21:07,613]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:21:08,566]-[log.py]-INFO:输入密码
+[2018-06-18 22:21:09,468]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:21:10,574]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:21:11,614]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:21:12,531]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:21:14,799]-[log.py]-INFO:进入框架
+[2018-06-18 22:21:15,096]-[log.py]-INFO:退出框架
+[2018-06-18 22:21:15,099]-[log.py]-INFO:[用户名]为空，错误提示信息正确！
+[2018-06-18 22:21:55,005]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:21:59,151]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:22:00,101]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:22:04,026]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:22:10,060]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:22:10,614]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:22:11,404]-[log.py]-INFO:性别选择“男”
+[2018-06-18 22:22:12,336]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:22:13,231]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:22:14,063]-[log.py]-INFO:输入密码
+[2018-06-18 22:22:15,098]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:22:16,555]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:22:17,594]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:22:18,545]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:22:20,731]-[log.py]-INFO:进入框架
+[2018-06-18 22:22:31,189]-[log.py]-INFO:退出框架
+[2018-06-18 22:22:31,193]-[log.py]-INFO:[真实姓名]为空，错误提示信息正确！
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_2</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: [2018-06-18 22:20:48,364]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:20:52,835]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:20:53,854]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:20:57,900]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:21:03,677]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:21:04,882]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:21:05,747]-[log.py]-INFO:性别选择“女”
+[2018-06-18 22:21:06,647]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:21:07,613]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:21:08,566]-[log.py]-INFO:输入密码
+[2018-06-18 22:21:09,468]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:21:10,574]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:21:11,614]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:21:12,531]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:21:14,799]-[log.py]-INFO:进入框架
+[2018-06-18 22:21:15,096]-[log.py]-INFO:退出框架
+[2018-06-18 22:21:15,099]-[log.py]-INFO:[用户名]为空，错误提示信息正确！
+[2018-06-18 22:21:55,005]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:21:59,151]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:22:00,101]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:22:04,026]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:22:10,060]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:22:10,614]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:22:11,404]-[log.py]-INFO:性别选择“男”
+[2018-06-18 22:22:12,336]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:22:13,231]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:22:14,063]-[log.py]-INFO:输入密码
+[2018-06-18 22:22:15,098]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:22:16,555]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:22:17,594]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:22:18,545]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:22:20,731]-[log.py]-INFO:进入框架
+[2018-06-18 22:22:31,189]-[log.py]-INFO:退出框架
+[2018-06-18 22:22:31,193]-[log.py]-INFO:[真实姓名]为空，错误提示信息正确！
+[2018-06-18 22:23:11,667]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:23:16,199]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:23:17,289]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:23:21,080]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:23:27,128]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:23:27,860]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:23:29,213]-[log.py]-INFO:性别选择“男”
+[2018-06-18 22:23:29,947]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:23:30,747]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:23:31,590]-[log.py]-INFO:输入密码
+[2018-06-18 22:23:32,596]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:23:33,960]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:23:34,983]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:23:35,969]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:23:38,146]-[log.py]-INFO:进入框架
+[2018-06-18 22:23:58,672]-[log.py]-INFO:退出框架
+[2018-06-18 22:23:58,676]-[log.py]-INFO:[密码]为空，错误提示信息正确！
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: [2018-06-18 22:20:48,364]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:20:52,835]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:20:53,854]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:20:57,900]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:21:03,677]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:21:04,882]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:21:05,747]-[log.py]-INFO:性别选择“女”
+[2018-06-18 22:21:06,647]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:21:07,613]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:21:08,566]-[log.py]-INFO:输入密码
+[2018-06-18 22:21:09,468]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:21:10,574]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:21:11,614]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:21:12,531]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:21:14,799]-[log.py]-INFO:进入框架
+[2018-06-18 22:21:15,096]-[log.py]-INFO:退出框架
+[2018-06-18 22:21:15,099]-[log.py]-INFO:[用户名]为空，错误提示信息正确！
+[2018-06-18 22:21:55,005]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:21:59,151]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:22:00,101]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:22:04,026]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:22:10,060]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:22:10,614]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:22:11,404]-[log.py]-INFO:性别选择“男”
+[2018-06-18 22:22:12,336]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:22:13,231]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:22:14,063]-[log.py]-INFO:输入密码
+[2018-06-18 22:22:15,098]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:22:16,555]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:22:17,594]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:22:18,545]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:22:20,731]-[log.py]-INFO:进入框架
+[2018-06-18 22:22:31,189]-[log.py]-INFO:退出框架
+[2018-06-18 22:22:31,193]-[log.py]-INFO:[真实姓名]为空，错误提示信息正确！
+[2018-06-18 22:23:11,667]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:23:16,199]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:23:17,289]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:23:21,080]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:23:27,128]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:23:27,860]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:23:29,213]-[log.py]-INFO:性别选择“男”
+[2018-06-18 22:23:29,947]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:23:30,747]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:23:31,590]-[log.py]-INFO:输入密码
+[2018-06-18 22:23:32,596]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:23:33,960]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:23:34,983]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:23:35,969]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:23:38,146]-[log.py]-INFO:进入框架
+[2018-06-18 22:23:58,672]-[log.py]-INFO:退出框架
+[2018-06-18 22:23:58,676]-[log.py]-INFO:[密码]为空，错误提示信息正确！
+[2018-06-18 22:24:40,970]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:24:45,185]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:24:46,037]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:24:50,259]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:24:56,318]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:24:57,415]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:24:58,396]-[log.py]-INFO:性别选择“男”
+[2018-06-18 22:24:59,096]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:25:00,286]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:25:01,418]-[log.py]-INFO:输入密码
+[2018-06-18 22:25:02,157]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:25:02,726]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:25:03,640]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:25:04,479]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:25:06,662]-[log.py]-INFO:进入框架
+[2018-06-18 22:25:37,256]-[log.py]-INFO:退出框架
+[2018-06-18 22:25:37,259]-[log.py]-INFO:[邮箱]为空，错误提示信息正确！
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    </tbody>
+    <tfoot>
+        <tr id='total_row'>
+            <td>Total</td>
+            <td>4</td>
+            <td class="text text-success">4</td>
+            <td class="text text-danger">0</td>
+            <td class="text text-warning">0</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tfoot>
+</table>
+
+    <div id='ending'>&nbsp;</div>
+</div>
+
+</body>
+</html>

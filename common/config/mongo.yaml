@@ -1,0 +1,7 @@
+mongo_database:
+  mongo_host: '192.168.1.249'
+  mongo_port: 27017
+  database: 'myDbTest'
+  collection: 'col2'
+  user: 'root2'
+  pwd: '123456'

@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>然之测试</title>
+    <meta name="generator" content="HtmlTestRunner 0.8.4"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    
+<style type="text/css" media="screen">
+
+/* -- css div popup ------------------------------------------------------------------------ */
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #99CCFF;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 10pt;
+    width: 500px;
+}
+
+/* -- report ------------------------------------------------------------------------ */
+
+#show_detail_line .label {
+    font-size: 85%;
+    cursor: pointer;
+}
+
+#show_detail_line {
+    margin: 2em auto 1em auto;
+}
+
+#total_row  { font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+</style>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class="container">
+    <div class='heading'>
+<h1>然之测试</h1>
+<p><strong>Start Time:</strong> 2018-06-10 23:25:00</p>
+<p><strong>Duration:</strong> 0:06:03.331782</p>
+<p><strong>Status:</strong> <span class="text text-success">Pass <strong>8</strong></span> <span class="text text-danger">Failure <strong>2</strong></span></p>
+
+<p class='description'>登陆，语言，模块标题，添加用户</p>
+</div>
+
+
+    
+<p id='show_detail_line'>
+<span class="label label-primary" onclick="showCase(0)">Summary</span>
+<span class="label label-danger" onclick="showCase(1)">Failed</span>
+<span class="label label-default" onclick="showCase(2)">All</span>
+</p>
+<table id='result_table' class="table">
+    <thead>
+        <tr id='header_row'>
+            <th>Test Group/Test case</td>
+            <th>Count</td>
+            <th>Pass</td>
+            <th>Fail</td>
+            <th>Error</td>
+            <th>View</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr class='text text-danger'>
+    <td>paramunittest.AddUserFieldsTestcast_0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c1',1)">Detail</a></td>
+</tr>
+
+<tr id='ft1.1' class='text text-success'>
+    <td class='text text-danger'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        fail</a>
+
+    <div id='div_ft1.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.1: [2018-06-10 23:25:19,561]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:25:20,513]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:25:24,302]-[log.py]-INFO:输入用户名
+[2018-06-10 23:25:24,634]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:24,833]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:25:25,133]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:25:31,358]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:25:35,200]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:25:35,680]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:25:38,770]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:25:43,737]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:25:44,165]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:25:44,481]-[log.py]-INFO:性别选择“女”
+[2018-06-10 23:25:44,912]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:25:45,250]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:25:45,836]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:46,182]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:25:46,854]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:25:47,324]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:25:47,946]-[log.py]-INFO:退出“后台管理”框架
+Traceback (most recent call last):
+  File "F:\SVN\atrepo5\hat\src\testcase_runner\case\add_user_fields_testcase.py", line 68, in test_add_user_failure
+    self.assertEqual("1","2","测试paramunittest,断言待后续补充完善！")
+AssertionError: '1' != '2'
+- 1
++ 2
+ : 测试paramunittest,断言待后续补充完善！
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-danger'>
+    <td>paramunittest.AddUserFieldsTestcast_1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c2',1)">Detail</a></td>
+</tr>
+
+<tr id='ft2.1' class='text text-success'>
+    <td class='text text-danger'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        fail</a>
+
+    <div id='div_ft2.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.1: [2018-06-10 23:25:19,561]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:25:20,513]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:25:24,302]-[log.py]-INFO:输入用户名
+[2018-06-10 23:25:24,634]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:24,833]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:25:25,133]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:25:31,358]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:25:35,200]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:25:35,680]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:25:38,770]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:25:43,737]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:25:44,165]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:25:44,481]-[log.py]-INFO:性别选择“女”
+[2018-06-10 23:25:44,912]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:25:45,250]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:25:45,836]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:46,182]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:25:46,854]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:25:47,324]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:25:47,946]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:09,532]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:10,517]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:26:14,284]-[log.py]-INFO:输入用户名
+[2018-06-10 23:26:14,633]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:14,852]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:26:15,199]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:26:21,061]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:26:24,923]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:26:25,380]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:26:29,002]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:26:34,232]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:26:34,551]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:26:34,873]-[log.py]-INFO:性别选择“男”
+[2018-06-10 23:26:35,262]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:26:35,720]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:26:36,117]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:36,482]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:26:37,112]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:26:37,705]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:26:38,223]-[log.py]-INFO:退出“后台管理”框架
+Traceback (most recent call last):
+  File "F:\SVN\atrepo5\hat\src\testcase_runner\case\add_user_fields_testcase.py", line 68, in test_add_user_failure
+    self.assertEqual("1","2","测试paramunittest,断言待后续补充完善！")
+AssertionError: '1' != '2'
+- 1
++ 2
+ : 测试paramunittest,断言待后续补充完善！
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_2</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: [2018-06-10 23:25:19,561]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:25:20,513]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:25:24,302]-[log.py]-INFO:输入用户名
+[2018-06-10 23:25:24,634]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:24,833]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:25:25,133]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:25:31,358]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:25:35,200]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:25:35,680]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:25:38,770]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:25:43,737]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:25:44,165]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:25:44,481]-[log.py]-INFO:性别选择“女”
+[2018-06-10 23:25:44,912]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:25:45,250]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:25:45,836]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:46,182]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:25:46,854]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:25:47,324]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:25:47,946]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:09,532]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:10,517]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:26:14,284]-[log.py]-INFO:输入用户名
+[2018-06-10 23:26:14,633]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:14,852]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:26:15,199]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:26:21,061]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:26:24,923]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:26:25,380]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:26:29,002]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:26:34,232]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:26:34,551]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:26:34,873]-[log.py]-INFO:性别选择“男”
+[2018-06-10 23:26:35,262]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:26:35,720]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:26:36,117]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:36,482]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:26:37,112]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:26:37,705]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:26:38,223]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:57,844]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:58,869]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:02,719]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:03,052]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:03,273]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:03,572]-[log.py]-INFO:点击“登录”按钮
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: [2018-06-10 23:25:19,561]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:25:20,513]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:25:24,302]-[log.py]-INFO:输入用户名
+[2018-06-10 23:25:24,634]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:24,833]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:25:25,133]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:25:31,358]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:25:35,200]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:25:35,680]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:25:38,770]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:25:43,737]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:25:44,165]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:25:44,481]-[log.py]-INFO:性别选择“女”
+[2018-06-10 23:25:44,912]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:25:45,250]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:25:45,836]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:46,182]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:25:46,854]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:25:47,324]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:25:47,946]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:09,532]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:10,517]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:26:14,284]-[log.py]-INFO:输入用户名
+[2018-06-10 23:26:14,633]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:14,852]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:26:15,199]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:26:21,061]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:26:24,923]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:26:25,380]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:26:29,002]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:26:34,232]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:26:34,551]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:26:34,873]-[log.py]-INFO:性别选择“男”
+[2018-06-10 23:26:35,262]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:26:35,720]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:26:36,117]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:36,482]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:26:37,112]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:26:37,705]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:26:38,223]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:57,844]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:58,869]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:02,719]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:03,052]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:03,273]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:03,572]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:27,096]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:28,180]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:31,980]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:32,319]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:32,542]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:32,857]-[log.py]-INFO:点击“登录”按钮
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_4</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c5',1)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        pass</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.1: [2018-06-10 23:25:19,561]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:25:20,513]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:25:24,302]-[log.py]-INFO:输入用户名
+[2018-06-10 23:25:24,634]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:24,833]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:25:25,133]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:25:31,358]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:25:35,200]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:25:35,680]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:25:38,770]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:25:43,737]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:25:44,165]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:25:44,481]-[log.py]-INFO:性别选择“女”
+[2018-06-10 23:25:44,912]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:25:45,250]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:25:45,836]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:46,182]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:25:46,854]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:25:47,324]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:25:47,946]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:09,532]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:10,517]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:26:14,284]-[log.py]-INFO:输入用户名
+[2018-06-10 23:26:14,633]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:14,852]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:26:15,199]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:26:21,061]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:26:24,923]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:26:25,380]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:26:29,002]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:26:34,232]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:26:34,551]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:26:34,873]-[log.py]-INFO:性别选择“男”
+[2018-06-10 23:26:35,262]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:26:35,720]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:26:36,117]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:36,482]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:26:37,112]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:26:37,705]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:26:38,223]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:57,844]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:58,869]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:02,719]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:03,052]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:03,273]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:03,572]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:27,096]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:28,180]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:31,980]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:32,319]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:32,542]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:32,857]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:54,940]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:55,956]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:59,788]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:00,138]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:00,378]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:00,696]-[log.py]-INFO:点击“登录”按钮
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_5</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c6',1)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        pass</a>
+
+    <div id='div_pt6.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.1: [2018-06-10 23:25:19,561]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:25:20,513]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:25:24,302]-[log.py]-INFO:输入用户名
+[2018-06-10 23:25:24,634]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:24,833]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:25:25,133]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:25:31,358]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:25:35,200]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:25:35,680]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:25:38,770]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:25:43,737]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:25:44,165]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:25:44,481]-[log.py]-INFO:性别选择“女”
+[2018-06-10 23:25:44,912]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:25:45,250]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:25:45,836]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:46,182]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:25:46,854]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:25:47,324]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:25:47,946]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:09,532]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:10,517]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:26:14,284]-[log.py]-INFO:输入用户名
+[2018-06-10 23:26:14,633]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:14,852]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:26:15,199]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:26:21,061]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:26:24,923]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:26:25,380]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:26:29,002]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:26:34,232]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:26:34,551]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:26:34,873]-[log.py]-INFO:性别选择“男”
+[2018-06-10 23:26:35,262]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:26:35,720]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:26:36,117]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:36,482]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:26:37,112]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:26:37,705]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:26:38,223]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:57,844]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:58,869]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:02,719]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:03,052]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:03,273]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:03,572]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:27,096]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:28,180]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:31,980]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:32,319]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:32,542]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:32,857]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:54,940]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:55,956]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:59,788]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:00,138]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:00,378]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:00,696]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:28:23,396]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:28:24,357]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:28:28,133]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:28,500]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:28,712]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:29,075]-[log.py]-INFO:点击“登录”按钮
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_6</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c7',1)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+        pass</a>
+
+    <div id='div_pt7.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.1: [2018-06-10 23:25:19,561]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:25:20,513]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:25:24,302]-[log.py]-INFO:输入用户名
+[2018-06-10 23:25:24,634]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:24,833]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:25:25,133]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:25:31,358]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:25:35,200]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:25:35,680]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:25:38,770]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:25:43,737]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:25:44,165]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:25:44,481]-[log.py]-INFO:性别选择“女”
+[2018-06-10 23:25:44,912]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:25:45,250]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:25:45,836]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:46,182]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:25:46,854]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:25:47,324]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:25:47,946]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:09,532]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:10,517]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:26:14,284]-[log.py]-INFO:输入用户名
+[2018-06-10 23:26:14,633]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:14,852]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:26:15,199]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:26:21,061]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:26:24,923]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:26:25,380]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:26:29,002]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:26:34,232]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:26:34,551]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:26:34,873]-[log.py]-INFO:性别选择“男”
+[2018-06-10 23:26:35,262]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:26:35,720]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:26:36,117]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:36,482]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:26:37,112]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:26:37,705]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:26:38,223]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:57,844]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:58,869]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:02,719]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:03,052]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:03,273]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:03,572]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:27,096]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:28,180]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:31,980]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:32,319]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:32,542]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:32,857]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:54,940]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:55,956]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:59,788]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:00,138]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:00,378]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:00,696]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:28:23,396]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:28:24,357]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:28:28,133]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:28,500]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:28,712]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:29,075]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:28:53,255]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:28:54,458]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:28:58,225]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:58,611]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:58,845]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:59,230]-[log.py]-INFO:点击“登录”按钮
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_7</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c8',1)">Detail</a></td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.1')" >
+        pass</a>
+
+    <div id='div_pt8.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt8.1: [2018-06-10 23:25:19,561]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:25:20,513]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:25:24,302]-[log.py]-INFO:输入用户名
+[2018-06-10 23:25:24,634]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:24,833]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:25:25,133]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:25:31,358]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:25:35,200]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:25:35,680]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:25:38,770]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:25:43,737]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:25:44,165]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:25:44,481]-[log.py]-INFO:性别选择“女”
+[2018-06-10 23:25:44,912]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:25:45,250]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:25:45,836]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:46,182]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:25:46,854]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:25:47,324]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:25:47,946]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:09,532]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:10,517]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:26:14,284]-[log.py]-INFO:输入用户名
+[2018-06-10 23:26:14,633]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:14,852]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:26:15,199]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:26:21,061]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:26:24,923]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:26:25,380]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:26:29,002]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:26:34,232]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:26:34,551]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:26:34,873]-[log.py]-INFO:性别选择“男”
+[2018-06-10 23:26:35,262]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:26:35,720]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:26:36,117]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:36,482]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:26:37,112]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:26:37,705]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:26:38,223]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:57,844]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:58,869]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:02,719]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:03,052]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:03,273]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:03,572]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:27,096]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:28,180]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:31,980]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:32,319]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:32,542]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:32,857]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:54,940]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:55,956]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:59,788]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:00,138]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:00,378]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:00,696]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:28:23,396]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:28:24,357]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:28:28,133]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:28,500]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:28,712]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:29,075]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:28:53,255]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:28:54,458]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:28:58,225]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:58,611]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:58,845]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:59,230]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:29:21,360]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:29:22,304]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:29:26,034]-[log.py]-INFO:输入用户名
+[2018-06-10 23:29:26,400]-[log.py]-INFO:输入密码
+[2018-06-10 23:29:26,629]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:29:26,866]-[log.py]-INFO:点击“登录”按钮
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_8</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c9',1)">Detail</a></td>
+</tr>
+
+<tr id='pt9.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt9.1')" >
+        pass</a>
+
+    <div id='div_pt9.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt9.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt9.1: [2018-06-10 23:25:19,561]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:25:20,513]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:25:24,302]-[log.py]-INFO:输入用户名
+[2018-06-10 23:25:24,634]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:24,833]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:25:25,133]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:25:31,358]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:25:35,200]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:25:35,680]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:25:38,770]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:25:43,737]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:25:44,165]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:25:44,481]-[log.py]-INFO:性别选择“女”
+[2018-06-10 23:25:44,912]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:25:45,250]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:25:45,836]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:46,182]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:25:46,854]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:25:47,324]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:25:47,946]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:09,532]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:10,517]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:26:14,284]-[log.py]-INFO:输入用户名
+[2018-06-10 23:26:14,633]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:14,852]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:26:15,199]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:26:21,061]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:26:24,923]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:26:25,380]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:26:29,002]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:26:34,232]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:26:34,551]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:26:34,873]-[log.py]-INFO:性别选择“男”
+[2018-06-10 23:26:35,262]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:26:35,720]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:26:36,117]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:36,482]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:26:37,112]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:26:37,705]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:26:38,223]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:57,844]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:58,869]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:02,719]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:03,052]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:03,273]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:03,572]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:27,096]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:28,180]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:31,980]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:32,319]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:32,542]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:32,857]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:54,940]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:55,956]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:59,788]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:00,138]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:00,378]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:00,696]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:28:23,396]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:28:24,357]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:28:28,133]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:28,500]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:28,712]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:29,075]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:28:53,255]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:28:54,458]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:28:58,225]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:58,611]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:58,845]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:59,230]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:29:21,360]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:29:22,304]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:29:26,034]-[log.py]-INFO:输入用户名
+[2018-06-10 23:29:26,400]-[log.py]-INFO:输入密码
+[2018-06-10 23:29:26,629]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:29:26,866]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:29:51,159]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:29:52,228]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:29:56,031]-[log.py]-INFO:输入用户名
+[2018-06-10 23:29:56,370]-[log.py]-INFO:输入密码
+[2018-06-10 23:29:56,581]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:29:56,896]-[log.py]-INFO:点击“登录”按钮
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>add_user_scenes_testcase.AddUserScencesTestcast</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c10',1)">Detail</a></td>
+</tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_success</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.1')" >
+        pass</a>
+
+    <div id='div_pt10.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt10.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt10.1: [2018-06-10 23:25:19,561]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:25:20,513]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:25:24,302]-[log.py]-INFO:输入用户名
+[2018-06-10 23:25:24,634]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:24,833]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:25:25,133]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:25:31,358]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:25:35,200]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:25:35,680]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:25:38,770]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:25:43,737]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:25:44,165]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:25:44,481]-[log.py]-INFO:性别选择“女”
+[2018-06-10 23:25:44,912]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:25:45,250]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:25:45,836]-[log.py]-INFO:输入密码
+[2018-06-10 23:25:46,182]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:25:46,854]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:25:47,324]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:25:47,946]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:09,532]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:10,517]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:26:14,284]-[log.py]-INFO:输入用户名
+[2018-06-10 23:26:14,633]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:14,852]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:26:15,199]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:26:21,061]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:26:24,923]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:26:25,380]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:26:29,002]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:26:34,232]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:26:34,551]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:26:34,873]-[log.py]-INFO:性别选择“男”
+[2018-06-10 23:26:35,262]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:26:35,720]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:26:36,117]-[log.py]-INFO:输入密码
+[2018-06-10 23:26:36,482]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:26:37,112]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:26:37,705]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:26:38,223]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:26:57,844]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:26:58,869]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:02,719]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:03,052]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:03,273]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:03,572]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:27,096]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:28,180]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:31,980]-[log.py]-INFO:输入用户名
+[2018-06-10 23:27:32,319]-[log.py]-INFO:输入密码
+[2018-06-10 23:27:32,542]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:27:32,857]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:27:54,940]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:27:55,956]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:27:59,788]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:00,138]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:00,378]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:00,696]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:28:23,396]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:28:24,357]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:28:28,133]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:28,500]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:28,712]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:29,075]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:28:53,255]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:28:54,458]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:28:58,225]-[log.py]-INFO:输入用户名
+[2018-06-10 23:28:58,611]-[log.py]-INFO:输入密码
+[2018-06-10 23:28:58,845]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:28:59,230]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:29:21,360]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:29:22,304]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:29:26,034]-[log.py]-INFO:输入用户名
+[2018-06-10 23:29:26,400]-[log.py]-INFO:输入密码
+[2018-06-10 23:29:26,629]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:29:26,866]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:29:51,159]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:29:52,228]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:29:56,031]-[log.py]-INFO:输入用户名
+[2018-06-10 23:29:56,370]-[log.py]-INFO:输入密码
+[2018-06-10 23:29:56,581]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:29:56,896]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:30:19,929]-[log.py]-INFO:开始点击登录界面的语言选择
+[2018-06-10 23:30:21,018]-[log.py]-INFO:成功选择简体中文
+[2018-06-10 23:30:24,888]-[log.py]-INFO:输入用户名
+[2018-06-10 23:30:25,245]-[log.py]-INFO:输入密码
+[2018-06-10 23:30:25,462]-[log.py]-INFO:点击“保持登录”
+[2018-06-10 23:30:25,712]-[log.py]-INFO:点击“登录”按钮
+[2018-06-10 23:30:31,863]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-10 23:30:35,908]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-10 23:30:36,399]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-10 23:30:39,687]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-10 23:30:44,979]-[log.py]-INFO:输入“用户名”
+[2018-06-10 23:30:45,362]-[log.py]-INFO:输入“真实姓名”
+[2018-06-10 23:30:45,729]-[log.py]-INFO:性别选择“女”
+[2018-06-10 23:30:46,053]-[log.py]-INFO:部门选择“销售”
+[2018-06-10 23:30:46,636]-[log.py]-INFO:角色选择“销售”
+[2018-06-10 23:30:47,054]-[log.py]-INFO:输入密码
+[2018-06-10 23:30:47,520]-[log.py]-INFO:再次输入密码
+[2018-06-10 23:30:48,227]-[log.py]-INFO:输入邮箱
+[2018-06-10 23:30:48,663]-[log.py]-INFO:点击“提交”按钮
+[2018-06-10 23:30:49,218]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-10 23:30:52,334]-[log.py]-INFO:进入“后台管理”框架
+[2018-06-10 23:31:00,292]-[log.py]-INFO:成功退出“后台管理”框架
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    </tbody>
+    <tfoot>
+        <tr id='total_row'>
+            <td>Total</td>
+            <td>10</td>
+            <td class="text text-success">8</td>
+            <td class="text text-danger">2</td>
+            <td class="text text-warning">0</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tfoot>
+</table>
+
+    <div id='ending'>&nbsp;</div>
+</div>
+
+</body>
+</html>

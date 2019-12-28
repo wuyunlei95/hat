@@ -1,0 +1,6 @@
+[2018-06-20 17:00:37,889]-[log.py]-INFO:{'by_user': 'runoob.com', '_id': ObjectId('5b268a8600b18c1748e8b129')}
+[2018-06-20 17:00:37,890]-[log.py]-INFO:runoob.com
+[2018-06-20 17:00:37,891]-[log.py]-INFO:{'by_user': 'runoob.com', '_id': ObjectId('5b268a8600b18c1748e8b12a')}
+[2018-06-20 17:00:37,892]-[log.py]-INFO:runoob.com
+[2018-06-20 17:00:37,893]-[log.py]-INFO:{'by_user': 'Neo4j', '_id': ObjectId('5b268a8600b18c1748e8b12b')}
+[2018-06-20 17:00:37,894]-[log.py]-INFO:Neo4j

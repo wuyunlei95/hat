@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>然之测试</title>
+    <meta name="generator" content="HtmlTestRunner 0.8.4"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    
+<style type="text/css" media="screen">
+
+/* -- css div popup ------------------------------------------------------------------------ */
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #99CCFF;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 10pt;
+    width: 500px;
+}
+
+/* -- report ------------------------------------------------------------------------ */
+
+#show_detail_line .label {
+    font-size: 85%;
+    cursor: pointer;
+}
+
+#show_detail_line {
+    margin: 2em auto 1em auto;
+}
+
+#total_row  { font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+</style>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class="container">
+    <div class='heading'>
+<h1>然之测试</h1>
+<p><strong>Start Time:</strong> 2018-06-18 22:58:06</p>
+<p><strong>Duration:</strong> 0:09:25.928369</p>
+<p><strong>Status:</strong> <span class="text text-success">Pass <strong>5</strong></span> <span class="text text-danger">Failure <strong>1</strong></span></p>
+
+<p class='description'>登陆，语言，模块标题，添加用户</p>
+</div>
+
+
+    
+<p id='show_detail_line'>
+<span class="label label-primary" onclick="showCase(0)">Summary</span>
+<span class="label label-danger" onclick="showCase(1)">Failed</span>
+<span class="label label-default" onclick="showCase(2)">All</span>
+</p>
+<table id='result_table' class="table">
+    <thead>
+        <tr id='header_row'>
+            <th>Test Group/Test case</td>
+            <th>Count</td>
+            <th>Pass</td>
+            <th>Fail</td>
+            <th>Error</td>
+            <th>View</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c1',1)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: [2018-06-18 22:58:43,735]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:58:48,369]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:58:49,329]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:58:53,552]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:58:59,734]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:59:00,968]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:59:01,848]-[log.py]-INFO:性别选择“女”
+[2018-06-18 22:59:02,782]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:59:03,787]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:59:04,619]-[log.py]-INFO:输入密码
+[2018-06-18 22:59:05,320]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:59:06,485]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:59:07,556]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:59:08,548]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:59:10,758]-[log.py]-INFO:进入框架
+[2018-06-18 22:59:11,110]-[log.py]-INFO:退出框架
+[2018-06-18 22:59:11,119]-[log.py]-INFO:[用户名]为空，错误提示信息正确！
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c2',1)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: [2018-06-18 22:58:43,735]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:58:48,369]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:58:49,329]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:58:53,552]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:58:59,734]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:59:00,968]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:59:01,848]-[log.py]-INFO:性别选择“女”
+[2018-06-18 22:59:02,782]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:59:03,787]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:59:04,619]-[log.py]-INFO:输入密码
+[2018-06-18 22:59:05,320]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:59:06,485]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:59:07,556]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:59:08,548]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:59:10,758]-[log.py]-INFO:进入框架
+[2018-06-18 22:59:11,110]-[log.py]-INFO:退出框架
+[2018-06-18 22:59:11,119]-[log.py]-INFO:[用户名]为空，错误提示信息正确！
+[2018-06-18 22:59:52,140]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:59:56,525]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:59:57,505]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:00:01,610]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:00:07,708]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:00:08,254]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:00:09,509]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:00:10,415]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:00:11,323]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:00:12,561]-[log.py]-INFO:输入密码
+[2018-06-18 23:00:13,507]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:00:14,716]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:00:15,816]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:00:16,736]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:00:18,914]-[log.py]-INFO:进入框架
+[2018-06-18 23:00:29,349]-[log.py]-INFO:退出框架
+[2018-06-18 23:00:29,352]-[log.py]-INFO:[真实姓名]为空，错误提示信息正确！
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_2</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: [2018-06-18 22:58:43,735]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:58:48,369]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:58:49,329]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:58:53,552]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:58:59,734]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:59:00,968]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:59:01,848]-[log.py]-INFO:性别选择“女”
+[2018-06-18 22:59:02,782]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:59:03,787]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:59:04,619]-[log.py]-INFO:输入密码
+[2018-06-18 22:59:05,320]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:59:06,485]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:59:07,556]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:59:08,548]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:59:10,758]-[log.py]-INFO:进入框架
+[2018-06-18 22:59:11,110]-[log.py]-INFO:退出框架
+[2018-06-18 22:59:11,119]-[log.py]-INFO:[用户名]为空，错误提示信息正确！
+[2018-06-18 22:59:52,140]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:59:56,525]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:59:57,505]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:00:01,610]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:00:07,708]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:00:08,254]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:00:09,509]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:00:10,415]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:00:11,323]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:00:12,561]-[log.py]-INFO:输入密码
+[2018-06-18 23:00:13,507]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:00:14,716]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:00:15,816]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:00:16,736]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:00:18,914]-[log.py]-INFO:进入框架
+[2018-06-18 23:00:29,349]-[log.py]-INFO:退出框架
+[2018-06-18 23:00:29,352]-[log.py]-INFO:[真实姓名]为空，错误提示信息正确！
+[2018-06-18 23:01:07,844]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:01:12,058]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:01:12,945]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:01:17,029]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:01:23,000]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:01:23,767]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:01:24,494]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:01:25,154]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:01:25,801]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:01:26,999]-[log.py]-INFO:输入密码
+[2018-06-18 23:01:27,955]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:01:29,587]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:01:30,988]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:01:31,910]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:01:34,095]-[log.py]-INFO:进入框架
+[2018-06-18 23:01:54,548]-[log.py]-INFO:退出框架
+[2018-06-18 23:01:54,552]-[log.py]-INFO:[密码]为空，错误提示信息正确！
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>paramunittest.AddUserFieldsTestcast_3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_failure</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: [2018-06-18 22:58:43,735]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:58:48,369]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:58:49,329]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:58:53,552]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:58:59,734]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:59:00,968]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:59:01,848]-[log.py]-INFO:性别选择“女”
+[2018-06-18 22:59:02,782]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:59:03,787]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:59:04,619]-[log.py]-INFO:输入密码
+[2018-06-18 22:59:05,320]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:59:06,485]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:59:07,556]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:59:08,548]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:59:10,758]-[log.py]-INFO:进入框架
+[2018-06-18 22:59:11,110]-[log.py]-INFO:退出框架
+[2018-06-18 22:59:11,119]-[log.py]-INFO:[用户名]为空，错误提示信息正确！
+[2018-06-18 22:59:52,140]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:59:56,525]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:59:57,505]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:00:01,610]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:00:07,708]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:00:08,254]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:00:09,509]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:00:10,415]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:00:11,323]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:00:12,561]-[log.py]-INFO:输入密码
+[2018-06-18 23:00:13,507]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:00:14,716]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:00:15,816]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:00:16,736]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:00:18,914]-[log.py]-INFO:进入框架
+[2018-06-18 23:00:29,349]-[log.py]-INFO:退出框架
+[2018-06-18 23:00:29,352]-[log.py]-INFO:[真实姓名]为空，错误提示信息正确！
+[2018-06-18 23:01:07,844]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:01:12,058]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:01:12,945]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:01:17,029]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:01:23,000]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:01:23,767]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:01:24,494]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:01:25,154]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:01:25,801]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:01:26,999]-[log.py]-INFO:输入密码
+[2018-06-18 23:01:27,955]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:01:29,587]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:01:30,988]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:01:31,910]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:01:34,095]-[log.py]-INFO:进入框架
+[2018-06-18 23:01:54,548]-[log.py]-INFO:退出框架
+[2018-06-18 23:01:54,552]-[log.py]-INFO:[密码]为空，错误提示信息正确！
+[2018-06-18 23:02:35,380]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:02:39,850]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:02:40,813]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:02:44,796]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:02:50,889]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:02:52,102]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:02:53,176]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:02:54,077]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:02:55,245]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:02:56,272]-[log.py]-INFO:输入密码
+[2018-06-18 23:02:56,999]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:02:57,563]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:02:58,376]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:02:59,339]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:03:01,558]-[log.py]-INFO:进入框架
+[2018-06-18 23:03:32,111]-[log.py]-INFO:退出框架
+[2018-06-18 23:03:32,114]-[log.py]-INFO:[邮箱]为空，错误提示信息正确！
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-danger'>
+    <td>add_user_scenes_testcase.AddUserScencesTestcast</td>
+    <td>2</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c5',2)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add_user_success_many_but_diff</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        pass</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.1: [2018-06-18 22:58:43,735]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:58:48,369]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:58:49,329]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:58:53,552]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:58:59,734]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:59:00,968]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:59:01,848]-[log.py]-INFO:性别选择“女”
+[2018-06-18 22:59:02,782]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:59:03,787]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:59:04,619]-[log.py]-INFO:输入密码
+[2018-06-18 22:59:05,320]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:59:06,485]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:59:07,556]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:59:08,548]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:59:10,758]-[log.py]-INFO:进入框架
+[2018-06-18 22:59:11,110]-[log.py]-INFO:退出框架
+[2018-06-18 22:59:11,119]-[log.py]-INFO:[用户名]为空，错误提示信息正确！
+[2018-06-18 22:59:52,140]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:59:56,525]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:59:57,505]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:00:01,610]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:00:07,708]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:00:08,254]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:00:09,509]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:00:10,415]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:00:11,323]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:00:12,561]-[log.py]-INFO:输入密码
+[2018-06-18 23:00:13,507]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:00:14,716]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:00:15,816]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:00:16,736]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:00:18,914]-[log.py]-INFO:进入框架
+[2018-06-18 23:00:29,349]-[log.py]-INFO:退出框架
+[2018-06-18 23:00:29,352]-[log.py]-INFO:[真实姓名]为空，错误提示信息正确！
+[2018-06-18 23:01:07,844]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:01:12,058]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:01:12,945]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:01:17,029]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:01:23,000]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:01:23,767]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:01:24,494]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:01:25,154]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:01:25,801]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:01:26,999]-[log.py]-INFO:输入密码
+[2018-06-18 23:01:27,955]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:01:29,587]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:01:30,988]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:01:31,910]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:01:34,095]-[log.py]-INFO:进入框架
+[2018-06-18 23:01:54,548]-[log.py]-INFO:退出框架
+[2018-06-18 23:01:54,552]-[log.py]-INFO:[密码]为空，错误提示信息正确！
+[2018-06-18 23:02:35,380]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:02:39,850]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:02:40,813]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:02:44,796]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:02:50,889]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:02:52,102]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:02:53,176]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:02:54,077]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:02:55,245]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:02:56,272]-[log.py]-INFO:输入密码
+[2018-06-18 23:02:56,999]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:02:57,563]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:02:58,376]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:02:59,339]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:03:01,558]-[log.py]-INFO:进入框架
+[2018-06-18 23:03:32,111]-[log.py]-INFO:退出框架
+[2018-06-18 23:03:32,114]-[log.py]-INFO:[邮箱]为空，错误提示信息正确！
+[2018-06-18 23:04:12,470]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:04:16,782]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:04:17,641]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:04:21,289]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:04:27,296]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:04:28,453]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:04:29,402]-[log.py]-INFO:性别选择“女”
+[2018-06-18 23:04:30,151]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:04:31,104]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:04:32,165]-[log.py]-INFO:输入密码
+[2018-06-18 23:04:32,997]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:04:34,203]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:04:35,129]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:04:35,934]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:04:39,206]-[log.py]-INFO:进入“后台管理”框架
+[2018-06-18 23:04:50,126]-[log.py]-INFO:成功退出“后台管理”框架
+[2018-06-18 23:04:50,802]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:04:54,819]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:04:55,734]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:04:59,795]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:05:06,053]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:05:06,835]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:05:07,481]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:05:08,099]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:05:08,766]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:05:09,539]-[log.py]-INFO:输入密码
+[2018-06-18 23:05:10,252]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:05:11,478]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:05:12,270]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:05:13,236]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:05:16,501]-[log.py]-INFO:进入“后台管理”框架
+[2018-06-18 23:05:26,805]-[log.py]-INFO:成功退出“后台管理”框架
+[2018-06-18 23:05:27,498]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:05:31,458]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:05:32,278]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:05:36,014]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:05:42,033]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:05:42,741]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:05:43,388]-[log.py]-INFO:性别选择“女”
+[2018-06-18 23:05:44,115]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:05:44,912]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:05:45,749]-[log.py]-INFO:输入密码
+[2018-06-18 23:05:46,461]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:05:47,576]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:05:48,363]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:05:49,281]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:05:52,480]-[log.py]-INFO:进入“后台管理”框架
+[2018-06-18 23:06:03,165]-[log.py]-INFO:成功退出“后台管理”框架
+[2018-06-18 23:06:04,000]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:06:07,913]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:06:08,691]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:06:12,470]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:06:18,861]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:06:19,584]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:06:20,341]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:06:20,978]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:06:21,682]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:06:22,453]-[log.py]-INFO:输入密码
+[2018-06-18 23:06:23,148]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:06:24,180]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:06:25,158]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:06:25,951]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:06:29,225]-[log.py]-INFO:进入“后台管理”框架
+[2018-06-18 23:06:40,074]-[log.py]-INFO:成功退出“后台管理”框架
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.2' class='text text-success'>
+    <td class='text text-danger'><div class='testcase'>test_add_user_success_one</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.2')" >
+        fail</a>
+
+    <div id='div_ft5.2' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.2: [2018-06-18 22:58:43,735]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:58:48,369]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:58:49,329]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 22:58:53,552]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 22:58:59,734]-[log.py]-INFO:输入“用户名”
+[2018-06-18 22:59:00,968]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 22:59:01,848]-[log.py]-INFO:性别选择“女”
+[2018-06-18 22:59:02,782]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 22:59:03,787]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 22:59:04,619]-[log.py]-INFO:输入密码
+[2018-06-18 22:59:05,320]-[log.py]-INFO:再次输入密码
+[2018-06-18 22:59:06,485]-[log.py]-INFO:输入邮箱
+[2018-06-18 22:59:07,556]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 22:59:08,548]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 22:59:10,758]-[log.py]-INFO:进入框架
+[2018-06-18 22:59:11,110]-[log.py]-INFO:退出框架
+[2018-06-18 22:59:11,119]-[log.py]-INFO:[用户名]为空，错误提示信息正确！
+[2018-06-18 22:59:52,140]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 22:59:56,525]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 22:59:57,505]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:00:01,610]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:00:07,708]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:00:08,254]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:00:09,509]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:00:10,415]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:00:11,323]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:00:12,561]-[log.py]-INFO:输入密码
+[2018-06-18 23:00:13,507]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:00:14,716]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:00:15,816]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:00:16,736]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:00:18,914]-[log.py]-INFO:进入框架
+[2018-06-18 23:00:29,349]-[log.py]-INFO:退出框架
+[2018-06-18 23:00:29,352]-[log.py]-INFO:[真实姓名]为空，错误提示信息正确！
+[2018-06-18 23:01:07,844]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:01:12,058]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:01:12,945]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:01:17,029]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:01:23,000]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:01:23,767]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:01:24,494]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:01:25,154]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:01:25,801]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:01:26,999]-[log.py]-INFO:输入密码
+[2018-06-18 23:01:27,955]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:01:29,587]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:01:30,988]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:01:31,910]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:01:34,095]-[log.py]-INFO:进入框架
+[2018-06-18 23:01:54,548]-[log.py]-INFO:退出框架
+[2018-06-18 23:01:54,552]-[log.py]-INFO:[密码]为空，错误提示信息正确！
+[2018-06-18 23:02:35,380]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:02:39,850]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:02:40,813]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:02:44,796]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:02:50,889]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:02:52,102]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:02:53,176]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:02:54,077]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:02:55,245]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:02:56,272]-[log.py]-INFO:输入密码
+[2018-06-18 23:02:56,999]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:02:57,563]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:02:58,376]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:02:59,339]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:03:01,558]-[log.py]-INFO:进入框架
+[2018-06-18 23:03:32,111]-[log.py]-INFO:退出框架
+[2018-06-18 23:03:32,114]-[log.py]-INFO:[邮箱]为空，错误提示信息正确！
+[2018-06-18 23:04:12,470]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:04:16,782]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:04:17,641]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:04:21,289]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:04:27,296]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:04:28,453]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:04:29,402]-[log.py]-INFO:性别选择“女”
+[2018-06-18 23:04:30,151]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:04:31,104]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:04:32,165]-[log.py]-INFO:输入密码
+[2018-06-18 23:04:32,997]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:04:34,203]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:04:35,129]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:04:35,934]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:04:39,206]-[log.py]-INFO:进入“后台管理”框架
+[2018-06-18 23:04:50,126]-[log.py]-INFO:成功退出“后台管理”框架
+[2018-06-18 23:04:50,802]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:04:54,819]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:04:55,734]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:04:59,795]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:05:06,053]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:05:06,835]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:05:07,481]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:05:08,099]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:05:08,766]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:05:09,539]-[log.py]-INFO:输入密码
+[2018-06-18 23:05:10,252]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:05:11,478]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:05:12,270]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:05:13,236]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:05:16,501]-[log.py]-INFO:进入“后台管理”框架
+[2018-06-18 23:05:26,805]-[log.py]-INFO:成功退出“后台管理”框架
+[2018-06-18 23:05:27,498]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:05:31,458]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:05:32,278]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:05:36,014]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:05:42,033]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:05:42,741]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:05:43,388]-[log.py]-INFO:性别选择“女”
+[2018-06-18 23:05:44,115]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:05:44,912]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:05:45,749]-[log.py]-INFO:输入密码
+[2018-06-18 23:05:46,461]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:05:47,576]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:05:48,363]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:05:49,281]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:05:52,480]-[log.py]-INFO:进入“后台管理”框架
+[2018-06-18 23:06:03,165]-[log.py]-INFO:成功退出“后台管理”框架
+[2018-06-18 23:06:04,000]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:06:07,913]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:06:08,691]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:06:12,470]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:06:18,861]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:06:19,584]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:06:20,341]-[log.py]-INFO:性别选择“男”
+[2018-06-18 23:06:20,978]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:06:21,682]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:06:22,453]-[log.py]-INFO:输入密码
+[2018-06-18 23:06:23,148]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:06:24,180]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:06:25,158]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:06:25,951]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:06:29,225]-[log.py]-INFO:进入“后台管理”框架
+[2018-06-18 23:06:40,074]-[log.py]-INFO:成功退出“后台管理”框架
+[2018-06-18 23:06:40,960]-[log.py]-INFO:成功点击“后台管理”按钮
+[2018-06-18 23:06:44,972]-[log.py]-INFO:成功进入“后台管理”框架
+[2018-06-18 23:06:45,768]-[log.py]-INFO:成功点击“组织”按钮
+[2018-06-18 23:06:49,853]-[log.py]-INFO:成功点击“新增用户”按钮
+[2018-06-18 23:06:55,593]-[log.py]-INFO:输入“用户名”
+[2018-06-18 23:06:56,305]-[log.py]-INFO:输入“真实姓名”
+[2018-06-18 23:06:56,960]-[log.py]-INFO:性别选择“女”
+[2018-06-18 23:06:57,611]-[log.py]-INFO:部门选择“销售”
+[2018-06-18 23:06:58,261]-[log.py]-INFO:角色选择“销售”
+[2018-06-18 23:06:59,047]-[log.py]-INFO:输入密码
+[2018-06-18 23:06:59,741]-[log.py]-INFO:再次输入密码
+[2018-06-18 23:07:01,003]-[log.py]-INFO:输入邮箱
+[2018-06-18 23:07:01,885]-[log.py]-INFO:点击“提交”按钮
+[2018-06-18 23:07:02,782]-[log.py]-INFO:退出“后台管理”框架
+[2018-06-18 23:07:05,979]-[log.py]-INFO:进入“后台管理”框架
+[2018-06-18 23:07:26,878]-[log.py]-INFO:成功退出“后台管理”框架
+Traceback (most recent call last):
+  File "F:\SVN\atrepo5\hat\src\testcase_runner\case\add_user_scenes_testcase.py", line 67, in test_add_user_success_one
+    self.assertEqual(True,self.sys_add_user_page.get_add_user_success_by_member_list_pages(user_info['account']),'成员列表页面无此新增用户名')
+AssertionError: True != False : 成员列表页面无此新增用户名
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    </tbody>
+    <tfoot>
+        <tr id='total_row'>
+            <td>Total</td>
+            <td>6</td>
+            <td class="text text-success">5</td>
+            <td class="text text-danger">1</td>
+            <td class="text text-warning">0</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tfoot>
+</table>
+
+    <div id='ending'>&nbsp;</div>
+</div>
+
+</body>
+</html>

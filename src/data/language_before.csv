@@ -1,0 +1,4 @@
+language,system_name,type,user,password,login,Keep Login,usertip,passwordtip
+chinese1,协同管理系统,简体,用户名,密码,登录,保持登录,请输入用户名,请输入密码
+chinese2,協同管理系統,繁體,用戶名,密碼,登錄,保持登錄,請輸入用戶名,請輸入密碼
+english,Ranger,English,Account,Password,Login,Keep Login,Please enter account,Please enter password

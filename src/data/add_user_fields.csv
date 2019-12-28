@@ -1,0 +1,5 @@
+account,realname,gender,dept,role,password1,password2,email,casetype,error_msg
+,use已经有这条记录了。r50,F,/Sales,销售,123456,123456,50333334@qq.com,Field_account_Null,用户名不能为空。;用户名应当为字母或数字的组合，至少三位
+user51,,M,/Sales,销售,123456,123456,020333334@qq.com,Field_realname_Null,真实姓名不能为空。
+user70,user70,M,/Sales,销售,,123456,700333334@qq.com,Field_password1_Null,请输入密码;password1不能为空。
+user71,user7IL。;邮箱1,M,/Sales,销售,123456,123456,,Field_email_Null,邮箱不能为空。;邮箱应当为合法的EMA

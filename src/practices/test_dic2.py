@@ -1,0 +1,8 @@
+account_error_info = 1
+realname_error_info = 2
+password1_error_info = 3
+email_error_info = 4
+add_user_error_info = {'account_error_info':account_error_info,'realname_error_info':realname_error_info,
+                       'password1_error_info':password1_error_info,'email_error_info':email_error_info}
+print((add_user_error_info['realname_error_info']))
+print((add_user_error_info['email_error_info']))

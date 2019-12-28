@@ -1,0 +1,26 @@
+import csv
+
+# 读取csv
+# 注意:csv的路径问题
+
+# 注意路径
+# hat/practices/test_csv_read.py
+# hat/data/uc_login.csv
+
+csv_file = open('..\\data\\uc_login.csv', mode='r', encoding='utf8')
+csv_data = csv.reader(csv_file)
+'''去掉标题'''
+title = 1
+for row in csv_data:
+    if title == 1:
+        title = 2
+        continue
+    print((row[0]))
+    # print(row)
+# a = True
+# for row in csv_data:
+#     # 去掉第一行标题栏
+#     if a == True:
+#         a = False
+#         continue
+#     print(row)
